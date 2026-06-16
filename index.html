@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YEON</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- color --- */
+        :root {
+            --bg-color: #010101; 
+            --main-text: #fdfdfd; 
+            --sub-text: #f9cbd4; 
+            --point-color: #f01340; 
+            --card-bg: #121012; 
+        }
+
+        /* --- style --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth; 
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--main-text);
+            font-family: 'Malgun Gothic', dotum, sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        /* --- navigation bar --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #010101;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid #5c0a1a;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--point-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            color: #5c0a1a;
+        }
+
+        .nav-menu a:hover {
+            color: var(--point-color);
+        }
+
+        /* --- layout --- */
+        section {
+            padding: 6rem 2rem 4rem 2rem; 
+            max-width: 1100px;
+            margin: 0 auto;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--point-color);
+            padding-left: 15px;
+            color: var(--point-color);
+        }
+
+        .sub-highlight {
+            color: var(--sub-text);
+        }
+
+        /* grid / card layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #222;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--sub-text);
+        }
+
+        /* --- sections --- */
+        /* main */
+        #main {
+            text-align: center;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: flex-start;
+            max-width: none; 
+            padding-inline: 0; 
+            padding-top: 0;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 400px; 
+            background-color: #000000; 
+            object-fit: cover;
+            margin-bottom: 2rem;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* about / vision */
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* skills tag */
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            background-color: #010101;
+            color: var(--sub-text);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #010101;
+        }
+
+        /* contact links */
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 1.2rem;
+            flex-wrap: wrap;
+            color: #5c0a1a;
+        }
+
+        .contact-links a:hover {
+            color: var(--point-color);
+            border-bottom-color: var(--point-color);
+        }
+
+        /* footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #5c0a1a;
+            border-top: 1px solid #5c0a1a;
+        }
+
+        /* mobile */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .home-title { font-size: 1.8rem; }
+            .section-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo"><a href="#main">YEON</a></div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#main">MAIN</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#vision">VISION</a></li>
+                    <li><a href="#courses">COURSES</a></li>
+                    <li><a href="#projects">PROJECTS</a></li>
+                    <li><a href="#skills">SKILLS</a></li>
+                    <li><a href="#activities">ACTIVITIES</a></li>
+                    <li><a href="#contact">CONTACT ME</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="main">
+        <img src="https://images.unsplash.com/photo-1530128118208-89f6ce02b37b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="IMAGE" class="profile-img">
+        <h1 class="main -title">EOM CHAEYEON</h1>
+        <p style="color: var(--sub-text);">이해 공감과 인내</p>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">ABOUT</h2>
+        <ul class="info-list">
+            <li>🏫 건양대학교 국방XR학부</li>
+            <li>📌 ILLUSTRATION / ANIMATING / PROGRAMMING</li>
+            <li>👍 FOCUSING / ADAPTATION</li>
+        </ul>
+    </section>
+
+    <section id="vision">
+        <h2 class="section-title">VISION</h2>
+        <div class="card">
+            <h3>목표</h3>
+            <p class="sub-highlight">설명</p>
+        </div>
+    </section>
+
+    <section id="courses">
+        <h2 class="section-title">COURSES</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>메타버스프로그래밍</h3>
+                <p class="sub-highlight">2026</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">설명</p>
+            </div>
+            <div class="card">
+                <h3>실감미디어컴퓨팅개론</h3>
+                <p class="sub-highlight">2026</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">설명</p>
+            </div>
+            <div class="card">
+                <h3>XR콘텐츠문화지형도</h3>
+                <p class="sub-highlight">2026</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">설명</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">PROJECTS</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>asphyxia</h3>
+                <p class="sub-highlight">ANIMATION</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">개인 제작 애니메이션</p>
+                <p style="font-size: 0.9rem;">WIP</p>
+            </div>
+            <div class="card">
+                <h3>Monsters, Inc.</h3>
+                <p class="sub-highlight">ROBLOX</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">팀 프로젝트</p>
+                <p style="font-size: 0.9rem;">몬스터 주식회사 기반 로블록스 스튜디오 프로젝트</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">SKILLS</h2>
+        <div class="card">
+            <h3 style="margin-bottom: 1rem;">사용 가능 및 학습 중인 기술</h3>
+            <div class="skill-tags">
+                <span class="tag">Adobe Photoshop</span>
+                <span class="tag">Adobe Illustrator</span>
+                <span class="tag">Adobe Premiere Pro</span>
+                <span class="tag">Adobe After Effect</span>
+                <span class="tag">Python</span>
+                <span class="tag">Lua</span>
+                <span class="tag">Java</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities">
+        <h2 class="section-title">ACTIVITIES</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>더필름</h3>
+                <p class="sub-highlight">03.2026 -</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">국방XR학부 학과 동아리</p>
+            </div>
+            <div class="card">
+                <h3>활동</h3>
+                <p class="sub-highlight">2026</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">설명</p>
+            </div>
+            <div class="card">
+                <h3>활동</h3>
+                <p class="sub-highlight">2026</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">설명</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">CONTACT ME</h2>
+        <div class="contact-links">
+            <a href="mailto:26521020@konyang.ac.kr"><i class="fas fa-envelope"></i> 26521020@konyang.ac.kr</a>
+            <a href="https://github.com/ecyeon" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Eom Chaeyeon. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
