@@ -4,324 +4,334 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YEON</title>
-    <!-- 폰트어썸 (아이콘) 무료 CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 구글 폰트 (Pretendard 대체용 널리 쓰이는 Noto Sans KR) -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        :root { 
-            /* 건양대학교 메인 그린 컬러 톤 적용 */
-            --primary-color: #0f005a; 
-            --primary-light: #18007a;
-            --primary-dark: #11003d;
-            --text-color: #333333;
-            --text-light: #666666;
-            --bg-color: #f4f7f6;
-            --white: #ffffff;
-            --transition: all 0.3s ease;
+        /* --- color --- */
+        :root {
+            --bg-color: #010101; 
+            --main-text: #fdfdfd; 
+            --sub-text: #f9cbd4; 
+            --point-color: #f01340; 
+            --card-bg: #121012; 
         }
 
+        /* --- style --- */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth; 
         }
 
         body {
-            font-family: 'Noto Sans KR', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
             background-color: var(--bg-color);
-            padding-top: 70px; /* 네비게이션 바 높이만큼 여백 */
+            color: var(--main-text);
+            font-family: 'Malgun Gothic', dotum, sans-serif;
+            line-height: 1.6;
         }
 
-        /* Top Navigation Bar */
-        .navbar {
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        /* --- navigation bar --- */
+        header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
+            background-color: #010101;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid #5c0a1a;
             z-index: 1000;
         }
 
-        .nav-logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            background-color: var(--bg-color);
-            color: var(--primary-color);
-        }
-
-        .nav-links a.active {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero .role {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .container {
+        .nav-container {
             max-width: 1100px;
-            margin: -3rem auto 3rem;
-            padding: 0 20px;
-            position: relative;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
         }
 
-        /* About Section */
-        .about-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin-bottom: 3rem;
-            text-align: center;
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--point-color);
         }
 
-        .about-card h2 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            color: #5c0a1a;
         }
 
-        /* Cards Layout (CSS Grid) */
+        .nav-menu a:hover {
+            color: var(--point-color);
+        }
+
+        /* --- layout --- */
+        section {
+            padding: 6rem 2rem 4rem 2rem; 
+            max-width: 1100px;
+            margin: 0 auto;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
         .section-title {
-            text-align: center;
+            font-size: 2rem;
             margin-bottom: 2rem;
-            color: var(--text-color);
+            border-left: 4px solid var(--point-color);
+            padding-left: 15px;
+            color: var(--point-color);
         }
 
-        .card-grid {
+        .sub-highlight {
+            color: var(--sub-text);
+        }
+
+        /* grid / card layout */
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
 
         .card {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: var(--transition);
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #222;
+            transition: transform 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            border-color: var(--sub-text);
         }
 
-        .card-img {
+        /* --- sections --- */
+        /* main */
+        #main {
+            text-align: center;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: flex-start;
+            max-width: none; 
+            padding-inline: 0; 
+            padding-top: 0;
+        }
+
+        .profile-img {
             width: 100%;
-            height: 200px;
+            height: 400px; 
+            background-color: #000000; 
             object-fit: cover;
+            margin-bottom: 2rem;
         }
 
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-content i {
-            color: var(--primary-color);
-            font-size: 1.5rem;
+        .main-title {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        .card-content h3 {
-            margin-bottom: 0.8rem;
-            color: var(--text-color);
+        /* about / vision */
+        .info-list {
+            list-style: none;
         }
 
-        .card-content p {
-            color: var(--text-light);
-            font-size: 0.95rem;
+        .info-list li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
-        /* Contact Section */
-        .contact-section {
-            text-align: center;
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        /* skills tag */
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
         }
 
+        .tag {
+            background-color: #010101;
+            color: var(--sub-text);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #010101;
+        }
+
+        /* contact links */
         .contact-links {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            gap: 2rem;
+            font-size: 1.2rem;
+            flex-wrap: wrap;
+            color: #5c0a1a;
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
+        .contact-links a:hover {
+            color: var(--point-color);
+            border-bottom-color: var(--point-color);
         }
 
-        .btn-outline {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        .btn-fill {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        .btn-fill:hover {
-            background: var(--primary-dark);
-        }
-
+        /* footer */
         footer {
             text-align: center;
-            padding: 2rem 0;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-top: 1px solid #e2e8f0;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #5c0a1a;
+            border-top: 1px solid #5c0a1a;
+        }
+
+        /* mobile */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .home-title { font-size: 1.8rem; }
+            .section-title { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- Top Navigation -->
-<nav class="navbar">
-    <a href="#" class="nav-logo">
-        <i class="fa-solid fa-vr-cardboard"></i> DXP Lab
-    </a>
-    <ul class="nav-links">
-        <li><a href="#" class="active"><i class="fa-solid fa-wand-magic-sparkles"></i> 현재 페이지 (Modern)</a></li>
-        <!-- 이전 페이지 파일명을 old.html 혹은 previous.html 로 맞추어 학생들에게 링크 이동을 시연하시면 됩니다 -->
-        <li><a href="index_initial.html"><i class="fa-solid fa-clock-rotate-left"></i> 이전 페이지 (Basic)</a></li>
-    </ul>
-</nav>
+    <header>
+        <div class="nav-container">
+            <div class="logo"><a href="#main">YEON</a></div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#main">MAIN</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#vision">VISION</a></li>
+                    <li><a href="#courses">COURSES</a></li>
+                    <li><a href="#projects">PROJECTS</a></li>
+                    <li><a href="#skills">SKILLS</a></li>
+                    <li><a href="#activities">ACTIVITIES</a></li>
+                    <li><a href="#contact">CONTACT ME</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<!-- Hero Section -->
-<header class="hero">
-    <h1>YEON</h1>
-    <p class="role">Professor & Director of DXP Lab</p>
-</header>
-
-<main class="container">
-    <!-- About Section -->
-    <section class="about-card">
-        <h2><i class="fa-solid fa-user-tie"></i> About Me</h2>
-        <p>
-            인간과 컴퓨터의 상호작용(HCI)을 연구하며, 가상현실(VR) 및 증강현실(AR) 환경에서의 
-            사용자 경험 개선과 <strong>사이버멀미(Cybersickness) 저감 기술</strong>에 집중하고 있습니다. 
-            데이터 전처리 및 분석 역량을 바탕으로 국방(National Defense) 및 의료 등 다양한 도메인을 위한 초실감형 몰입 기술을 탐구합니다.
-        </p>
+    <section id="main">
+        <img src="https://images.unsplash.com/photo-1530128118208-89f6ce02b37b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="IMAGE" class="profile-img">
+        <h1 class="main -title">EOM CHAEYEON</h1>
+        <p style="color: var(--sub-text);">이해 공감과 인내</p>
     </section>
 
-    <h2 class="section-title">Research Interests</h2>
-    
-    <!-- Cards Section -->
-    <section class="card-grid">
-        <!-- Card 1 -->
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&w=600&q=80" alt="VR Headset" class="card-img">
-            <div class="card-content">
-                <i class="fa-solid fa-shield-halved"></i>
-                <h3>XR for National Defense</h3>
-                <p>국방 훈련을 위한 초실감형 메타버스 인터페이스 연구 및 인공지능 기반 인간 검증 데이터셋 구축.</p>
-            </div>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Data Analysis" class="card-content-img card-img">
-            <div class="card-content">
-                <i class="fa-solid fa-eye"></i>
-                <h3>Cybersickness Mitigation</h3>
-                <p>시선 추적(Eye-tracking) 및 시각/햅틱 피드백을 활용한 자율주행 및 VR 환경 내 사이버멀미 분석 및 저감 솔루션.</p>
-            </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Medical Technology" class="card-img">
-            <div class="card-content">
-                <i class="fa-solid fa-bed-pulse"></i>
-                <h3>Digital Therapeutics</h3>
-                <p>병상 환자(Bedridden Patients) 및 교통약자를 위한 VR 기반 치료/편의 기술 및 상호작용 인터페이스 설계.</p>
-            </div>
-        </article>
+    <section id="about">
+        <h2 class="section-title">ABOUT</h2>
+        <ul class="info-list">
+            <li>🏫 건양대학교 국방XR학부</li>
+            <li>📌 ILLUSTRATION / ANIMATING / PROGRAMMING</li>
+            <li>👍 FOCUSING / ADAPTATION</li>
+        </ul>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <h2>Let's Connect</h2>
-        <p style="margin-top: 10px; color: var(--text-light);">연구 협력이나 DXP 연구실에 관심이 있으시다면 언제든 연락주세요.</p>
-        <div class="contact-links">
-            <a href="mailto:example@korea.ac.kr" class="btn btn-fill">
-                <i class="fa-solid fa-envelope"></i> Email Me
-            </a>
-            <a href="https://github.com" class="btn btn-outline" target="_blank">
-                <i class="fa-brands fa-github"></i> GitHub
-            </a>
-            <a href="#" class="btn btn-outline">
-                <i class="fa-solid fa-globe"></i> Lab Website
-            </a>
+    <section id="vision">
+        <h2 class="section-title">VISION</h2>
+        <div class="card">
+            <h3>목표</h3>
+            <p class="sub-highlight">설명</p>
         </div>
     </section>
-</main>
 
-<footer>
-    <p>&copy; 2026 Hanseob Kim & DXP Lab. All rights reserved.</p>
-</footer>
+    <section id="courses">
+        <h2 class="section-title">COURSES</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>메타버스프로그래밍</h3>
+                <p class="sub-highlight">2026</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">설명</p>
+            </div>
+            <div class="card">
+                <h3>실감미디어컴퓨팅개론</h3>
+                <p class="sub-highlight">2026</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">설명</p>
+            </div>
+            <div class="card">
+                <h3>XR콘텐츠문화지형도</h3>
+                <p class="sub-highlight">2026</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">설명</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">PROJECTS</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>vomit</h3>
+                <p class="sub-highlight">ANIMATION</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">개인 제작 애니메이션</p>
+                <p style="font-size: 0.9rem;">WIP</p>
+            </div>
+            <div class="card">
+                <h3>Monsters, Inc.</h3>
+                <p class="sub-highlight">ROBLOX</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">팀 프로젝트</p>
+                <p style="font-size: 0.9rem;">몬스터 주식회사 기반 로블록스 스튜디오 프로젝트</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">SKILLS</h2>
+        <div class="card">
+            <h3 style="margin-bottom: 1rem;">사용 가능 및 학습 중인 기술</h3>
+            <div class="skill-tags">
+                <span class="tag">Adobe Photoshop</span>
+                <span class="tag">Adobe Illustrator</span>
+                <span class="tag">Adobe Premiere Pro</span>
+                <span class="tag">Adobe After Effect</span>
+                <span class="tag">Python</span>
+                <span class="tag">Lua</span>
+                <span class="tag">Java</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities">
+        <h2 class="section-title">ACTIVITIES</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>더필름</h3>
+                <p class="sub-highlight">03.2026 -</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">국방XR학부 학과 동아리</p>
+            </div>
+            <div class="card">
+                <h3>활동</h3>
+                <p class="sub-highlight">2026</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">설명</p>
+            </div>
+            <div class="card">
+                <h3>활동</h3>
+                <p class="sub-highlight">2026</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">설명</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">CONTACT ME</h2>
+        <div class="contact-links">
+            <a href="mailto:26521020@konyang.ac.kr"><i class="fas fa-envelope"></i> 26521020@konyang.ac.kr</a>
+            <a href="https://github.com/ecyeon" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Eom Chaeyeon. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
